@@ -6,7 +6,7 @@ const CleanWebpackPlugin = require('clean-webpack-plugin');
 
 const isProd = process.env.NODE_ENV === 'production';
 
-const cssDev = ['style-loader', 'css-loader', 'sass-loader'];
+const cssDev = ['style-loader', 'css-loader?sourceMap', 'sass-loader?sourceMap'];
 const cssProd = ExtractTextPlugin.extract({
 	fallback: 'style-loader',
 	use: ['css-loader', 'sass-loader'],
@@ -23,8 +23,9 @@ module.exports = {
 	output: {
 		path: path.join(__dirname, 'dist'),
 		// filename: '[name].[chunkhash].js', // every file has different hash value
-		filename: '[name].[hash].js', // files generate the same hash value at one process (for hot module replacement)
+		filename: '[name].[chunkhash].js', // files generate the same hash value at one process (for hot module replacement)
 	},
+	devtool: 'source-map',
 	module: {
 		rules: [
 			{

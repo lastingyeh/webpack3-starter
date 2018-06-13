@@ -143,6 +143,47 @@
     ...
 ```
 
+#### Debug (webpack.config.js)
+
+    1. js 
+
+```javascript
+    module.exports = {
+    ...
+	devtool: 'source-map',
+```
+
+    2. scss & css (add '?sourceMap')
+
+```javascript
+
+    const cssDev = ['style-loader', 'css-loader?sourceMap', 'sass-loader?sourceMap'];
+```
+
+#### production & development config settings
+
+    1. $ npm i webpack-merge --save-dev
+
+    2. $ touch webpack.common.js webpack.prod.js webpack.dev.js
+
+    3. write common-use in 'webpack.common.js', see webpack.common.js
+
+    4. write dev-use in 'webpack.dev.js', see webpack.dev.js (ex. devServer, devTool...)
+
+    5. write prod-use in 'webpack.prod.js', see webpack.prod.js (ex. set env)
+
+    6. modify in package.json
+
+```json
+    "scripts": {
+        "dev": "webpack-dev-server --config webpack.dev.js",
+        "prod": "webpack --config webpack.prod.js"
+    },
+```
+
+
 #### References By 
 
-[webpack 3 零基础入门视频教程](https://www.youtube.com/playlist?list=PLqz9dierEhT6yENDFYHqMVkDgGlOqpk_8)
+[1. webpack 3 零基础入门视频教程](https://www.youtube.com/playlist?list=PLqz9dierEhT6yENDFYHqMVkDgGlOqpk_8)
+
+[2. webpack 3 零基础入门教程](https://www.rails365.net/groups/webpack)
